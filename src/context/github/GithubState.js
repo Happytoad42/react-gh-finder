@@ -10,6 +10,17 @@ import {
   GET_REPOS
 } from '../types';
 
+let gitgubClientId;
+let githubClientSecret;
+
+if (process.env.NODE_ENV !== 'production') {
+  gitgubClientId = process.env.REACT_APP_GITHUB_CLIENT_ID;
+  githubClientSecret = process.env.REACT_APP_GITHUB_CLIENT_SECRET;
+} else {
+  gitgubClientId = process.env.GITHUB_CLIENT_ID;
+  githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
+}
+
 const GithubState = props => {
   const initialState = {
     users: [],
